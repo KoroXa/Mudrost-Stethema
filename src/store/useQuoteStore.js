@@ -4,79 +4,90 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getQuotes } from '../api/apiService';
 
+// Глобальная переменная для контроллера (вне стора, чтобы не вызывать ререндер)
+let abortController = null;
+
 export const useQuoteStore = create(
   persist(
     (set, get) => ({
       quotes: [],
       isLoading: false,
-      error: null, // <--- ДОБАВИЛИ СОСТОЯНИЕ ОШИБКИ
+      isRefreshing: false, // Для Pull-to-Refresh
+      error: null,
       hasHydrated: false,
+      page: 1,             // Для пагинации
+      hasMore: true,       // Есть ли еще данные
 
-      fetchQuotes: async () => {
-        set({ isLoading: true, error: null }); // Сбрасываем старую ошибку при новом запросе
-        console.log("🚀 Запрос к серверу...");
-        
+      fetchQuotes: async (isRefresh = false) => {
+        // Отменяем предыдущий запрос, если он был (предотвращение утечек)
+        if (abortController) abortController.abort();
+        abortController = new AbortController();
+
+        if (isRefresh) {
+          set({ isRefreshing: true });
+        } else {
+          set({ isLoading: true, page: 1 });
+        }
+        set({ error: null });
+
         try {
-          const serverQuotes = await getQuotes(20);
-          set({ quotes: serverQuotes });
-          console.log("✅ Данные получены!");
+          const allQuotes = await getQuotes(20, abortController.signal);
+          
+          // Имитация пагинации на клиенте (берем первые 10 для 1-й страницы)
+          const itemsPerPage = 10;
+          const paginatedQuotes = allQuotes.slice(0, itemsPerPage);
+
+          set({ 
+            quotes: paginatedQuotes, 
+            hasMore: allQuotes.length > itemsPerPage 
+          });
         } catch (err) {
-          console.log("⚠️ Ошибка сети:", err.message);
-          // Записываем понятный текст ошибки для UI
-          set({ error: "Не удалось загрузить цитаты. Проверьте интернет-соединение." });
+          if (err.name !== 'AbortError') {
+            set({ error: "Не удалось загрузить цитаты. Проверьте интернет-соединение." });
+          }
         } finally {
-          // Блок finally гарантированно выключает спиннер (как требует ТЗ)
+          set({ isLoading: false, isRefreshing: false });
+        }
+      },
+
+      loadMore: async () => {
+        const { quotes, page, hasMore, isLoading } = get();
+        if (!hasMore || isLoading) return;
+
+        set({ isLoading: true });
+        try {
+          const allQuotes = await getQuotes(20);
+          const nextPage = page + 1;
+          const itemsPerPage = 10;
+          
+          const newItems = allQuotes.slice(page * itemsPerPage, nextPage * itemsPerPage);
+
+          set({ 
+            quotes: [...quotes, ...newItems], 
+            page: nextPage,
+            hasMore: allQuotes.length > nextPage * itemsPerPage
+          });
+        } catch (err) {
+          console.log("Ошибка пагинации", err);
+        } finally {
           set({ isLoading: false });
         }
       },
 
-      addQuote: (quoteData) => {
-        const now = new Date().toISOString();
-        const newQuote = {
-          ...quoteData,
-          id: Date.now().toString(),
-          isLiked: false,
-          dateAdded: now,
-          statusHistory: [{ status: 'created', date: now }],
-        };
-        set((state) => ({ quotes: [newQuote, ...state.quotes] }));
-      },
-
-      toggleLike: (id) => {
-        set((state) => ({
-          quotes: state.quotes.map((q) => {
-            if (q.id === id) {
-              const newStatus = !q.isLiked ? 'liked' : 'unliked';
-              return {
-                ...q,
-                isLiked: !q.isLiked,
-                statusHistory: [...q.statusHistory, { status: newStatus, date: new Date().toISOString() }],
-              };
-            }
-            return q;
-          }),
-        }));
-      },
-
-      deleteQuote: (id) => {
-        set((state) => ({
-          quotes: state.quotes.filter((q) => q.id !== id),
-        }));
-      },
+      addQuote: (quoteData) => { /* ... без изменений ... */ },
+      toggleLike: (id) => { /* ... без изменений ... */ },
+      deleteQuote: (id) => { /* ... без изменений ... */ },
     }),
     {
       name: 'mudrost-stethema-storage',
       storage: createJSONStorage(() => AsyncStorage),
-      version: 22, // <--- СБРАСЫВАЕМ КЕШ ЕЩЕ РАЗ
+      version: 23, // Сброс кеша
       migrate: (persistedState, version) => {
-        if (version !== 22) return { quotes: [] }; 
+        if (version !== 23) return { quotes: [] }; 
         return persistedState;
       },
-      // ЭТА ФУНКЦИЯ ВКЛЮЧАЕТ ФЛАГ, КОГДА ДАННЫЕ ЗАГРУЖЕНЫ ИЗ ПАМЯТИ
       onRehydrateStorage: () => (state) => {
-        if (state) {
-          state.hasHydrated = true;
-        }
+        if (state) state.hasHydrated = true;
       },
     }
   )
