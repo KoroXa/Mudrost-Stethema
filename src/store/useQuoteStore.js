@@ -9,26 +9,23 @@ export const useQuoteStore = create(
     (set, get) => ({
       quotes: [],
       isLoading: false,
-      hasHydrated: false, // <--- Флаг загрузки из памяти
+      error: null, // <--- ДОБАВИЛИ СОСТОЯНИЕ ОШИБКИ
+      hasHydrated: false,
 
       fetchQuotes: async () => {
-        set({ isLoading: true });
+        set({ isLoading: true, error: null }); // Сбрасываем старую ошибку при новом запросе
         console.log("🚀 Запрос к серверу...");
         
         try {
           const serverQuotes = await getQuotes(20);
-          console.log("📦 Что пришло от API:", serverQuotes);
-          
-          // Проверка: если сервер вернул массив, сохраняем его
-          if (Array.isArray(serverQuotes)) {
-             set({ quotes: serverQuotes });
-             console.log("✅ Данные сохранены в стор!");
-          } else {
-             console.log("⚠️ Сервер вернул не массив!");
-          }
-        } catch (error) {
-          console.log("⚠️ Ошибка сети:", error);
+          set({ quotes: serverQuotes });
+          console.log("✅ Данные получены!");
+        } catch (err) {
+          console.log("⚠️ Ошибка сети:", err.message);
+          // Записываем понятный текст ошибки для UI
+          set({ error: "Не удалось загрузить цитаты. Проверьте интернет-соединение." });
         } finally {
+          // Блок finally гарантированно выключает спиннер (как требует ТЗ)
           set({ isLoading: false });
         }
       },
