@@ -20,8 +20,10 @@ export const getQuotes = async (limit = 10) => {
     // (Если тебе вообще не нужен лимит, можешь просто вернуть data)
     return data.slice(0, limit); 
     
-  } catch (error) {
-    console.error("❌ Ошибка сети:", error);
+    } catch (error) {
+    // БЫЛО: console.error("❌ Ошибка сети:", error);
+    // СТАЛО:
+    console.log("📡 Ошибка сети (это нормально при тесте):", error.message);
     throw error;
   }
 };
