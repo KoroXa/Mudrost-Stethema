@@ -1,29 +1,18 @@
 // src/api/apiService.js
-
 const BASE_URL = 'http://localhost:3000'; 
 
-export const getQuotes = async (limit = 10) => {
+// Добавляем параметр signal
+export const getQuotes = async (limit = 20, signal = null) => {
   try {
-    // 1. УБИРАЕМ ?_limit=10, чтобы сервер не искал несуществующее поле
-    const response = await fetch(`${BASE_URL}/quotes`);
+    // Если сервер json-server v1, он игнорирует _limit, поэтому забираем всё
+    const response = await fetch(`${BASE_URL}/quotes`, { signal });
     
-    console.log(`📡 Статус ответа API: ${response.status} ${response.statusText}`);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    // 2. Получаем ВСЕ данные от сервера
     const data = await response.json();
-    
-    // 3. Если данных больше, чем лимит, отрезаем лишнее прямо в коде
-    // (Если тебе вообще не нужен лимит, можешь просто вернуть data)
-    return data.slice(0, limit); 
-    
-    } catch (error) {
-    // БЫЛО: console.error("❌ Ошибка сети:", error);
-    // СТАЛО:
-    console.log("📡 Ошибка сети (это нормально при тесте):", error.message);
-    throw error;
+    return data; // Возвращаем весь массив (пагинацию сделаем на клиенте)
+  } catch (error) {
+    // Убираем console.error, чтобы не было красных экранов
+    throw error; 
   }
 };
