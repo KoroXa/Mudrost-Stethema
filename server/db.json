@@ -1,0 +1,373 @@
+{
+  "quotes": [
+    {
+      "id": "1",
+      "text": "Воображение важнее знаний.",
+      "author": "Альберт Эйнштейн",
+      "authorBio": "Физик-теоретик, один из основателей современной теоретической физики.",
+      "tags": ["Наука", "Мотивация"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Альберт_Эйнштейн",
+      "isLiked": false,
+      "dateAdded": "2026-11-01T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-01T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "2",
+      "text": "Быть или не быть - вот в чём вопрос.",
+      "author": "Уильям Шекспир",
+      "authorBio": "Английский драматург и поэт, считающийся величайшим англоязычным писателем.",
+      "tags": ["Философия", "Жизнь"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Гамлет",
+      "isLiked": true,
+      "dateAdded": "2026-11-02T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-02T10:00:00.000Z" },
+        { "status": "liked", "date": "2026-11-06T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "3",
+      "text": "Запомни: всего одна ошибка — и ты ошибся.",
+      "author": "Джейсон Стетхем",
+      "authorBio": "Британский актёр, продюсер и бывший профессиональный прыгун в воду.",
+      "tags": ["Мем", "Философия", "Успех"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Джейсон_Стетхем",
+      "isLiked": false,
+      "dateAdded": "2026-11-03T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-03T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "4",
+      "text": "Выберите работу по душе, и вам не придется работать ни одного дня в жизни.",
+      "author": "Конфуций",
+      "authorBio": "Древнекитайский мыслитель и философ.",
+      "tags": ["Мотивация", "Успех"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Конфуций",
+      "isLiked": false,
+      "dateAdded": "2026-11-04T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-04T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "5",
+      "text": "Я мыслю, следовательно, я существую.",
+      "author": "Рене Декарт",
+      "authorBio": "Французский философ, математик и физик.",
+      "tags": ["Философия", "Наука"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Рене_Декарт",
+      "isLiked": true,
+      "dateAdded": "2026-11-05T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-05T10:00:00.000Z" },
+        { "status": "liked", "date": "2026-11-08T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "6",
+      "text": "Человек — это то, что он делает из себя.",
+      "author": "Жан-Поль Сартр",
+      "authorBio": "Французский философ-экзистенциалист, писатель и драматург.",
+      "tags": ["Философия", "Жизнь"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Жан-Поль_Сартр",
+      "isLiked": false,
+      "dateAdded": "2026-11-06T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-06T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "7",
+      "text": "Мы то, что мы делаем постоянно. Совершенство — это не действие, а привычка.",
+      "author": "Аристотель",
+      "authorBio": "Древнегреческий философ и учёный.",
+      "tags": ["Успех", "Мотивация"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Аристотель",
+      "isLiked": false,
+      "dateAdded": "2026-11-07T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-07T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "8",
+      "text": "Если вы хотите вести счастливую жизнь, вы должны быть привязаны к цели, а не к людям или к вещам.",
+      "author": "Альберт Эйнштейн",
+      "authorBio": "Физик-теоретик, один из основателей современной теоретической физики.",
+      "tags": ["Жизнь", "Философия"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Альберт_Эйнштейн",
+      "isLiked": false,
+      "dateAdded": "2026-11-08T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-08T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "9",
+      "text": "Тот, кто ничего не знает, ничего не сомневается.",
+      "author": "Чарльз Дарвин",
+      "authorBio": "Английский натуралист и путешественник, создатель теории эволюции.",
+      "tags": ["Наука", "Философия"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Чарльз_Дарвин",
+      "isLiked": false,
+      "dateAdded": "2026-11-09T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-09T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "10",
+      "text": "Свобода — это право говорить людям то, чего они не хотят слышать.",
+      "author": "Джордж Оруэлл",
+      "authorBio": "Английский писатель и публицист.",
+      "tags": ["Жизнь", "Философия"],
+      "sourceUrl": "https://ru.wikiquote.org/wiki/Джордж_Оруэлл",
+      "isLiked": false,
+      "dateAdded": "2026-11-10T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-10T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "11",
+      "text": "Мы будем преследовать террористов везде. В аэропорту — в аэропорту. Значит, вы уж меня извините, в туалете поймаем, мы и в сортире их замочим, в конце концов.",
+      "author": "Владимир Путин",
+      "authorBio": "Президент РФ. Автор самой знаменитой фразы 1999 года.",
+      "tags": ["Мем", "Политика", "Мотивация", "Успех"],
+      "sourceUrl": "https://rg.ru/amp/2023/05/23/peskov-slova-putina-o-neobhodimosti-mochit-v-sortire-terroristov-aktualny-i-sejchas.html",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "12",
+      "text": "Когда у нас всё спокойно, размеренно, стабильно — нам скучно, застой. Хочется движухи.",
+      "author": "Владимир Путин",
+      "authorBio": "Президент РФ. Мастер неожиданных откровений на прямых линиях.",
+      "tags": ["Мем", "Политика", "Философия", "Жизнь"],
+      "sourceUrl": "https://otr-online.ru/news/putin-rossii-pri-spokoistvii-i-stabilnosti-skuchno-i-hochetsya-dvizhuhi-263061.html",
+      "isLiked": true,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" },
+        { "status": "liked", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "13",
+      "text": "Я был лучшим президентом в истории Израиля.",
+      "author": "Дональд Трамп",
+      "authorBio": "45-й и 47-й президент США. Не стесняется в самооценке.",
+      "tags": ["Мем", "Политика", "Успех", "Мотивация"],
+      "sourceUrl": "https://oxu.az/ru/v-mire/tramp-nazval-sebya-luchshim-prezidentom-v-istorii-izrailya",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "14",
+      "text": "Русских невозможно победить, мы убедились в этом за сотни лет. Но русским можно привить ложные ценности, и тогда они победят сами себя!",
+      "author": "Отто фон Бисмарк (фейк)",
+      "authorBio": "Немецкий канцлер, чьи фейковые цитаты стали народными мемами.",
+      "tags": ["Мем", "Политика", "Философия", "Жизнь"],
+      "sourceUrl": "https://provereno.media/blog/2023/12/15/govoril-li-bismark-russkikh-nevozmozhno-pobedit-no-im-mozhno-privit-lzhivye-tsennosti-i-togda-oni-pobedyat-sami-sebya/",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "15",
+      "text": "Мы вбухиваем бешеные деньги (un pognon de dingue) в социальные пособия, а люди всё равно остаются бедными.",
+      "author": "Эммануэль Макрон",
+      "authorBio": "Президент Франции, мастер неформальных выражений.",
+      "tags": ["Мем", "Политика", "Философия", "Жизнь"],
+      "sourceUrl": "https://www.franceinfo.fr/replay-radio/les-informes-de-france-info/pognon-de-dingue-c-est-un-piege-de-communication-redoutable-qui-a-tres-bien-marche_2776419.html",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "16",
+      "text": "Мне только 83. А что вы смеётесь, это только два раза по сорок, плюс.",
+      "author": "Джо Байден",
+      "authorBio": "Президент США, шутник и мастер оговорок.",
+      "tags": ["Мем", "Политика", "Жизнь", "Философия"],
+      "sourceUrl": "https://aif.ru/society/bayden-smeshil-gostey-pohoron-pastora-dzheksona-shutkami-o-vozraste",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "17",
+      "text": "Бомбы готовы, но приглашения так и нет.",
+      "author": "Ким Чен Ын (интернет-мем)",
+      "authorBio": "Лидер КНДР, ставший героем мемов о геополитическом FOMO.",
+      "tags": ["Мем", "Политика", "Философия", "Жизнь"],
+      "sourceUrl": "",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "18",
+      "text": "Один задумчивый дурак хуже 10 врагов.",
+      "author": "Иосиф Сталин",
+      "authorBio": "Советский лидер, знавший толк в кадрах.",
+      "tags": ["Мем", "Политика", "Успех", "Мотивация"],
+      "sourceUrl": "https://www.newsru.co.il/arch/mideast/18dec2009/stalin.html",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "19",
+      "text": "Мы вам покажем кузькину мать!",
+      "author": "Никита Хрущёв",
+      "authorBio": "Советский лидер, мастер эмоциональных обещаний.",
+      "tags": ["Мем", "Политика", "Мотивация", "Успех"],
+      "sourceUrl": "https://news.ru/",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "20",
+      "text": "Кукуруза — царица полей!",
+      "author": "Никита Хрущёв",
+      "authorBio": "Советский лидер, обожавший кукурузу.",
+      "tags": ["Мем", "Политика", "Успех", "Мотивация"],
+      "sourceUrl": "",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "21",
+      "text": "Я устал, я ухожу.",
+      "author": "Борис Ельцин",
+      "authorBio": "Первый президент РФ, самый мемный политик 90-х (фраза — народная).",
+      "tags": ["Мем", "Политика", "Философия", "Жизнь"],
+      "sourceUrl": "https://provereno.media/blog/2021/02/01/govoril-li-boris-elcin-31-dekabrya-1999-goda-ya-ustal-ya-uhzhu/",
+      "isLiked": true,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" },
+        { "status": "liked", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "22",
+      "text": "Настоящий мужчина, как ковёр тёти Зины — с каждым годом лысеет.",
+      "author": "Джейсон Стетхем (народное)",
+      "authorBio": "Британский актёр, ставший героем пацанских цитат.",
+      "tags": ["Мем", "Жизнь", "Философия"],
+      "sourceUrl": "https://www.yapokupayu.ru/",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "23",
+      "text": "Если закрыть глаза, будет темно.",
+      "author": "Джейсон Стетхем (народное)",
+      "authorBio": "Британский актёр, чьи фейковые цитаты стали мемами.",
+      "tags": ["Мем", "Философия", "Жизнь"],
+      "sourceUrl": "https://pikabu.ru/",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "24",
+      "text": "Нельзя отворачиваться от семьи, даже если она отвернулась от тебя.",
+      "author": "Вин Дизель (Доминик Торетто)",
+      "authorBio": "Американский актёр. Голос поколения и главный защитник семьи.",
+      "tags": ["Мем", "Жизнь", "Мотивация"],
+      "sourceUrl": "https://www.kinopoisk.ru/",
+      "isLiked": true,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" },
+        { "status": "liked", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "25",
+      "text": "Нет ничего печальнее, чем дикий зверь, запертый в клетке.",
+      "author": "Вин Дизель (Доминик Торетто)",
+      "authorBio": "Американский актёр. Романтик дорог и семейных ценностей.",
+      "tags": ["Мем", "Философия", "Жизнь"],
+      "sourceUrl": "https://watpad.ru/story/72824/1184045",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "26",
+      "text": "Все ищут острых ощущений, но самое важное — это семья... Твоя семья.",
+      "author": "Вин Дизель (Доминик Торетто)",
+      "authorBio": "Американский актёр. Живёт гонками на четверть мили.",
+      "tags": ["Мем", "Успех", "Мотивация"],
+      "sourceUrl": "https://watpad.ru/story/72824/1184045",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "27",
+      "text": "Россия. Путин. Победа!",
+      "author": "Вячеслав Володин",
+      "authorBio": "Спикер Госдумы. Автор самого неловкого скандирования.",
+      "tags": ["Мем", "Политика", "Успех", "Мотивация"],
+      "sourceUrl": "https://echofm.online/opinions/rossiya-putin-pobeda-skandiruet-volodin",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    },
+    {
+      "id": "28",
+      "text": "Шойгу! Герасимов! Где боеприпасы?",
+      "author": "Евгений Пригожин",
+      "authorBio": "Основатель ЧВК «Вагнер». Автор самого громкого видеообращения.",
+      "tags": ["Мем", "Политика", "Философия", "Успех"],
+      "sourceUrl": "https://www.bbc.com/russian/features-65501087",
+      "isLiked": false,
+      "dateAdded": "2026-11-11T10:00:00.000Z",
+      "statusHistory": [
+        { "status": "created", "date": "2026-11-11T10:00:00.000Z" }
+      ]
+    }
+  ]
+}
