@@ -2,88 +2,110 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getQuotes } from '../api/apiService';
-
-// Глобальная переменная для контроллера (вне стора, чтобы не вызывать ререндер)
-let abortController = null;
+import { getQuotesFromDB, createQuoteInDB, toggleLikeInDB, deleteQuoteFromDB } from '../api/supabaseService';
 
 export const useQuoteStore = create(
   persist(
     (set, get) => ({
       quotes: [],
       isLoading: false,
-      isRefreshing: false, // Для Pull-to-Refresh
+      isRefreshing: false,
       error: null,
       hasHydrated: false,
-      page: 1,             // Для пагинации
-      hasMore: true,       // Есть ли еще данные
 
+      // 1. ЗАГРУЗКА ЦИТАТ
       fetchQuotes: async (isRefresh = false) => {
-        // Отменяем предыдущий запрос, если он был (предотвращение утечек)
-        if (abortController) abortController.abort();
-        abortController = new AbortController();
-
-        if (isRefresh) {
-          set({ isRefreshing: true });
-        } else {
-          set({ isLoading: true, page: 1 });
-        }
+        if (isRefresh) set({ isRefreshing: true });
+        else set({ isLoading: true });
         set({ error: null });
 
         try {
-          const allQuotes = await getQuotes(20, abortController.signal);
+          const serverQuotes = await getQuotesFromDB();
           
-          // Имитация пагинации на клиенте (берем первые 10 для 1-й страницы)
-          const itemsPerPage = 10;
-          const paginatedQuotes = allQuotes.slice(0, itemsPerPage);
+          // Преобразуем поля из базы (snake_case) в наш формат (camelCase)
+          const formattedQuotes = serverQuotes.map(q => ({
+            ...q,
+            sourceUrl: q.source_url,
+            coverImage: q.cover_image,
+            isLiked: q.is_liked,
+            dateAdded: q.date_added,
+            statusHistory: q.status_history
+          }));
 
-          set({ 
-            quotes: paginatedQuotes, 
-            hasMore: allQuotes.length > itemsPerPage 
-          });
+          set({ quotes: formattedQuotes });
         } catch (err) {
-          if (err.name !== 'AbortError') {
-            set({ error: "Не удалось загрузить цитаты. Проверьте интернет-соединение." });
-          }
+          console.log("Ошибка загрузки:", err);
+          set({ error: "Не удалось загрузить цитаты. Проверьте интернет." });
         } finally {
           set({ isLoading: false, isRefreshing: false });
         }
       },
 
-      loadMore: async () => {
-        const { quotes, page, hasMore, isLoading } = get();
-        if (!hasMore || isLoading) return;
+      // 2. ДОБАВЛЕНИЕ ЦИТАТЫ
+      addQuote: async (quoteData) => {
+        const now = new Date().toISOString();
+        const payload = {
+          ...quoteData,
+          statusHistory: [{ status: 'created', date: now }],
+        };
 
-        set({ isLoading: true });
         try {
-          const allQuotes = await getQuotes(20);
-          const nextPage = page + 1;
-          const itemsPerPage = 10;
+          const savedQuote = await createQuoteInDB(payload);
           
-          const newItems = allQuotes.slice(page * itemsPerPage, nextPage * itemsPerPage);
+          const formattedQuote = {
+            ...savedQuote,
+            sourceUrl: savedQuote.source_url,
+            coverImage: savedQuote.cover_image,
+            isLiked: savedQuote.is_liked,
+            dateAdded: savedQuote.date_added,
+            statusHistory: savedQuote.status_history
+          };
 
-          set({ 
-            quotes: [...quotes, ...newItems], 
-            page: nextPage,
-            hasMore: allQuotes.length > nextPage * itemsPerPage
-          });
-        } catch (err) {
-          console.log("Ошибка пагинации", err);
-        } finally {
-          set({ isLoading: false });
+          set((state) => ({ quotes: [formattedQuote, ...state.quotes] }));
+        } catch (error) {
+          console.log("Ошибка сохранения в БД:", error);
+          alert("Не удалось сохранить цитату на сервере.");
         }
       },
 
-      addQuote: (quoteData) => { /* ... без изменений ... */ },
-      toggleLike: (id) => { /* ... без изменений ... */ },
-      deleteQuote: (id) => { /* ... без изменений ... */ },
+      // 3. ЛАЙК / ДИЗЛАЙК
+      toggleLike: async (id) => {
+        const currentQuote = get().quotes.find(q => q.id === id);
+        if (!currentQuote) return;
+        const newIsLiked = !currentQuote.isLiked;
+
+        // Оптимистичное обновление (сразу меняем цвет сердечка)
+        set((state) => ({
+          quotes: state.quotes.map((q) => q.id === id ? { ...q, isLiked: newIsLiked } : q),
+        }));
+
+        try {
+          await toggleLikeInDB(id, newIsLiked);
+        } catch (error) {
+          console.log("Ошибка обновления лайка:", error);
+          // Если ошибка — возвращаем как было
+          set((state) => ({
+            quotes: state.quotes.map((q) => q.id === id ? { ...q, isLiked: !newIsLiked } : q),
+          }));
+        }
+      },
+
+      // 4. УДАЛЕНИЕ
+      deleteQuote: async (id) => {
+        set((state) => ({ quotes: state.quotes.filter((q) => q.id !== id) }));
+        try {
+          await deleteQuoteFromDB(id);
+        } catch (error) {
+          console.log("Ошибка удаления:", error);
+        }
+      },
     }),
     {
       name: 'mudrost-stethema-storage',
       storage: createJSONStorage(() => AsyncStorage),
-      version: 23, // Сброс кеша
+      version: 27, // Сбрасываем кеш, чтобы приложение начало с чистого листа
       migrate: (persistedState, version) => {
-        if (version !== 23) return { quotes: [] }; 
+        if (version !== 27) return { quotes: [] }; 
         return persistedState;
       },
       onRehydrateStorage: () => (state) => {
