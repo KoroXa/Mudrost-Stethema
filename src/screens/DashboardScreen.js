@@ -13,7 +13,7 @@ export default function DashboardScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState('');
   
   const { 
-    quotes, toggleLike, fetchQuotes, loadMore, 
+    quotes, toggleLike, fetchQuotes, 
     isLoading, isRefreshing, error, hasHydrated 
   } = useQuoteStore();
 
@@ -111,8 +111,8 @@ export default function DashboardScreen({ navigation }) {
         }
         
         // ПАГИНАЦИЯ
-        onEndReached={() => loadMore()}
-        onEndReachedThreshold={0.5} // Сработает, когда останется пол-экрана до конца
+        //onEndReached={() => loadMore()}
+        //onEndReachedThreshold={0.5} // Сработает, когда останется пол-экрана до конца
 
         // ПОДВАЛ СПИСКА (Спиннер подгрузки или "Ничего не найдено")
         ListFooterComponent={

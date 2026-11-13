@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import SplashScreen from '../screens/SplashScreen';
 import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen'; // <-- Проверь, что этот импорт есть
 import DashboardScreen from '../screens/DashboardScreen';
 import ScannerScreen from '../screens/ScannerScreen';
 import FormScreen from '../screens/FormScreen';
@@ -30,7 +31,6 @@ function MainTabs() {
           backgroundColor: COLORS.surface,
           borderTopWidth: 1,
           borderTopColor: COLORS.border,
-          // По ТЗ: кастомная высота 64px + безопасная зона
           height: 64 + insets.bottom, 
           paddingBottom: insets.bottom > 0 ? insets.bottom : 8, 
           paddingTop: 8,
@@ -58,15 +58,14 @@ export default function AppNavigator() {
     <Stack.Navigator 
       screenOptions={{ 
         headerShown: false,
-        // По ТЗ: глобальная анимация появления экрана
         animation: 'slide_from_right', 
-        // По ТЗ: настройка кастомной стрелки (на случай если включим шапку)
         headerTintColor: COLORS.textMain,
         headerBackTitleVisible: false, 
       }}
     >
       <Stack.Screen name="Splash" component={SplashScreen} options={{ animation: 'fade' }} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="MainApp" component={MainTabs} />
       <Stack.Screen name="Detail" component={DetailScreen} />
     </Stack.Navigator>
